@@ -1,0 +1,5 @@
+- id: datadog-metrics
+  name: Datadog Metrics Hook
+  description: A pre-commit hook to send logs and metrics to DataDog
+  entry: ./run_datadog_metrics.bat
+  language: script
