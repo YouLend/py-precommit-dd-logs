@@ -3,3 +3,6 @@
   description: A pre-commit hook to send logs and metrics to DataDog
   entry: ./run_datadog_metrics.bat
   language: script
+  env:
+    API_GATEWAY_URL: ${{ secrets.API_GATEWAY_URL }}
+    X_PRECOMMIT_AUTH: ${{ secrets.X_PRECOMMIT_AUTH }}
