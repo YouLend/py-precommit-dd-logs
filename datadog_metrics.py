@@ -3,6 +3,7 @@ import getpass
 import requests
 import json
 import subprocess
+import os
 
 def get_precommit_output(file_path):
     try:
