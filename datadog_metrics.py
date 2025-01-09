@@ -53,7 +53,7 @@ detailed_message = f"User Name: {user_name}\nBranch Name: {branch_name}\nProject
 
 detailed_message += "\n\nPre-commit Results:\n\n" + "\n".join(pre_commit_results)
 
-api_gateway_url = "https://zkewhgnmf5.execute-api.eu-west-1.amazonaws.com/pre-commit/webhook" 
+api_gateway_url = os.getenv("API_GATEWAY_URL") 
 
 data = {
     "user_name": user_name,
@@ -70,7 +70,7 @@ if all([data.get("user_name"), data.get("branch_name"), data.get("project_name")
     
     headers = {
         'Content-Type': 'application/json',
-        'X-PreCommit-Auth': '8VWa8IyzVfApNVAqsbvvHlNkiLcTSHAhM19973LxTlp5Kja5IJQdb12tCUbAiyJEEPMNP3JJOtqeqXgh3I5x1VuMD7GmtpUWIqwqYEE'
+        'X-PreCommit-Auth': os.getenv("X_PRECOMMIT_AUTH")
     }
 
     response = requests.post(api_gateway_url, data=json.dumps(data), headers=headers)
