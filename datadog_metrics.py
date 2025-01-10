@@ -7,7 +7,7 @@ import os
 
 def get_precommit_output(file_path):
     try:
-        base_directory = os.path.abspath("/safe/directory/for/precommit")
+        base_directory = os.path.abspath(file_path)
         resolved_path = os.path.abspath(file_path)
 
         if not os.path.commonpath([resolved_path, base_directory]) == base_directory:
