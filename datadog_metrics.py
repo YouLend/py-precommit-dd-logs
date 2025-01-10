@@ -125,9 +125,9 @@ def parse_precommit_output(output):
 def get_git_branch():
     try:
         branch_name = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], stderr=subprocess.STDOUT)
-        return branch_name.strip().decode('utf-8', errors='ignore')  # Handle decode errors gracefully
+        return branch_name.strip().decode('utf-8', errors='replace')
     except subprocess.CalledProcessError as e:
-        return f"Error getting branch name: {e.output.decode('utf-8', errors='ignore')}"
+        return f"Error getting branch name: {e.output.decode('utf-8', errors='replace')}"
     except Exception as e:
         return f"Error getting branch name: {str(e)}"
 
