@@ -18,7 +18,7 @@ echo. >> "%HOOK_DIR%precommit_output.txt"
 echo Pre-commit results: >> "%HOOK_DIR%precommit_output.txt"
 echo. >> "%HOOK_DIR%precommit_output.txt"
 
-pre-commit run --all-files --hook-stage commit | findstr /v "datadog-metrics" >> "%HOOK_DIR%precommit_output.txt" 2>&1
+pre-commit run --hook-stage commit | findstr /v "datadog-metrics" >> "%HOOK_DIR%precommit_output.txt" 2>&1
 
 pre-commit run --hook-stage commit --hook-id datadog-metrics
 
