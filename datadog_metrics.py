@@ -124,13 +124,19 @@ def parse_precommit_output(output):
 
 def get_git_branch():
     try:
-        branch_name = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], stderr=subprocess.STDOUT)
-        return branch_name.strip().decode('utf-8', errors='replace')
+        result = subprocess.run(
+            ['git', 'rev-parse', '--abbrev-ref', 'HEAD'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+            text=True
+        )
+        return result.stdout.strip()
     except subprocess.CalledProcessError as e:
-        return f"Error getting branch name: {e.output.decode('utf-8', errors='replace')}"
+        return f"Error getting branch name: {e.stderr.strip()}"
     except Exception as e:
         return f"Error getting branch name: {str(e)}"
-
+        
 user_name = getpass.getuser()
 
 if len(sys.argv) > 1:
