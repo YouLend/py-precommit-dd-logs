@@ -22,7 +22,7 @@ pre-commit run --hook-stage commit | findstr /v "datadog-metrics" >> "%HOOK_DIR%
 
 pre-commit run --hook-stage commit --hook-id datadog-metrics
 
-python "%HOOK_DIR%datadog_metrics.py" "%HOOK_DIR%precommit_output.txt"
+py -3 "%HOOK_DIR%datadog_metrics.py" "%HOOK_DIR%precommit_output.txt"
 
 if exist "%HOOK_DIR%precommit_output.txt" del "%HOOK_DIR%precommit_output.txt"
 
