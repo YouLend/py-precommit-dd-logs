@@ -72,7 +72,7 @@ detailed_message = f"User Name: {user_name}\nBranch Name: {branch_name}\nProject
 
 detailed_message += "\n\nPre-commit Results:\n\n" + "\n".join(pre_commit_results)
 
-api_gateway_url = "https://zkewhgnmf5.execute-api.eu-west-1.amazonaws.com/pre-commit/webhook"
+api_gateway_url = "https://3ow8bnjb94.execute-api.eu-west-1.amazonaws.com/pre-commit/webhook"
 
 data = {
     "user_name": user_name,
